@@ -1,0 +1,29 @@
+<h1>Mon profil: </h1>
+  <p>Prénom : <%=@profil.first_name%><p>
+  <p>Nom: <%=@profil.last_name%><p>
+  <p>Email: <%=@profil.email%><p>
+  <p>Description : <%=@profil.description%><p>
+
+  <%=link_to "modifier le profil", edit_admin_user_path %>
+  <%= form_tag url_for(action: 'destroy'),method: "delete" do %>
+    <%= submit_tag "Supprimer" %> 
+  <% end %> 
+
+  <center><div class="card-deck"></center>
+  
+<% @events.each do |liste| %>
+
+  <% if @profil.id == liste.admin_id %>
+  <center><div class="card" style="width: 50rem;">
+  <h5 class="card-header"><%=liste.admin.last_name%></h5>
+  <div class="card-body">
+    <h5 class="card-title"><%=liste.title%></h5>
+    <%= link_to "voir l'evenement", event_path(liste.id) %>
+  </div>
+</div><center>
+</br>
+</br>
+
+<% end %>
+<% end %>
+</div></center>

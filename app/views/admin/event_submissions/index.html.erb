@@ -1,0 +1,23 @@
+
+
+
+<center>
+<div class="card-columns">
+
+<%@events.each do |liste|%>
+  <% if liste.validated == nil &&  liste.admin != nil %>
+  <div class="card border-danger mb-3">
+  <h5 class="card-header"><%=liste.admin.last_name%></h5>
+  <div class="card-body">
+    <h6 class="card-title"><%=liste.title%></h6>
+    <%= link_to "Voir l'event", admin_event_submission_path(liste.id) %>
+  </div>
+</div>
+</br>
+</br>
+<% end %>
+<% end %>
+
+</div>
+</div>
+</center>
